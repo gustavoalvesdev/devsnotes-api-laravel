@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NoteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +23,9 @@ Route::get('/ping', function (Request $request) {
     return ['pong' => true];
 });
 
-/*
-Route::get('/notes', '');
 
+Route::get('/notes', [NoteController::class, 'all']);
+/*
 Route::get('/note/{id}', '');
 
 Route::post('/note', '');
