@@ -67,4 +67,37 @@ class NoteController extends Controller
 
         return $this->array;
     }
+
+    public function edit(Request $request, $id)
+    {
+
+        $title = $request->input('title');
+        $body = $request->input('body');
+
+        if ($id && $title && $body) {
+
+            $note = Note::find($id);
+
+            if ($note) {
+
+                $note->title = $title;
+                $note->body = $body;
+                $note->save();
+
+                $this->array['result'] = [
+                    'id' => $id,
+                    'title' => $title,
+                    'body' => $body
+                ];
+
+            } else {
+                $this->array['error'] = 'ID inexistente';
+            }
+
+        } else {
+            $this->array['error'] = 'Campos não enviados';
+        }
+
+        return $this->array;
+    }
 }
