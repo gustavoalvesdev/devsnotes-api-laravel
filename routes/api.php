@@ -32,4 +32,4 @@ Route::post('/note', [NoteController::class, 'new']);
 
 Route::put('/note/{id}', [NoteController::class, 'edit']);
 
-# Route::delete('/note/{id}', '');
+Route::delete('/note/{id}',[NoteController::class, 'delete']);
